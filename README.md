@@ -41,7 +41,7 @@ Using TensorFlow, a binary classification deep neural network model is defined. 
 
 The architecture of the model is next compiled using the binary_crossentropy loss function, the adam optimizer, and the accuracy evaluation metric. The training dataset is then fit to it with 50 epochs. 
 
-Working with this model as a baseline, modifications are then made to it in the interest of improving the model's accuracy. Two different alternate models are tested in comparison to the baseline model: (1) the number of epochs is changed from 50 to 100, and (2) an additonal layer is added. These models are finally compared to the baseline model.
+Working with this model as a baseline, modifications are then made to it in the interest of improving the model's accuracy. Two different alternate models are tested in comparison to the baseline model: (1) the activation function is changed from "relu" to "tahn", and (2) an additonal layer is added. These models are finally compared to the baseline model.
 
 ---
 ## Contributors
