@@ -1,10 +1,12 @@
-<img src= "images/clusters.png" width="930" height="200">
+<img src= "images/neural.png" width="930" height="200">
 
-# Clustering Cryptos with Unsupervised Learning
+# Risk Management with Neural Nets
 
-This notebook analyzes cryptocurrency data, specifically changes in prices over various time intervals for various cryptocurrencies, and then clusters each cryptocurrency accordingly. 
+This Jupyter notebook creates a neural network model that predicts whether applicants will be successful if funded by a venture capital firm. 
 
-This code takes two approaches to clustering: (1) using the elbow plot method to determine the optimal value of 'k' and then using the K-Means algorithm on the original (scaled) dataset to cluster, and (2) using the Principal Component Analysis (PCA) reduction technique followed by the elbow method for determing 'k', and then using the K-Means algorithm on the PCA-reduced dataset to cluster.
+Included in the "Resources" folder is a CSV file containing data for more than 34,000 organizations that have received funding from a venture capital firm (Alphabet Soup). This dataset includes a variety of information about each business, including whether or not it ultimately became successful. 
+
+Using machine learning and neural networks, the included Jupyter notebook uses the features in the provided dataset to create a binary classifier model that will predict whether an applicant will become a successful business.
 
 ---
 ## Technologies
@@ -13,8 +15,6 @@ This application leverages python 3.7 with the following packages:
 
 * pandas: an open-source library that offers easy-to-use data analysis tools for Python.
 * pathlib: for creation of file paths allowing the application to interact with a computer's filesystem.
-* hvplot.pandas: a visualization library included in the PyViz package that can produce advanced charts    
-  and interactive visualizations. 
 * sklearn: a Python library for machine learning and statistical modeling including tools for classification, regression, clustering and dimensionality reduction.
 * tensorflow: end-to-end open-source platform for machine learning permitting code to be run across multiple platforms in a highly efficient way.
 * keras: an abstraction layer on top of TensorFlow that provides a Python interface for artificial neural networks.
@@ -33,15 +33,15 @@ Within this environment, next install the above listed dependencies. To do so, i
 ---
 ## Usage
 
-After importing the data (provided in a CSV file stored in the Resources folder of this repo), the data is prepared using the sklearn StandardScaler() function.
+The first part of this notebook pre-processes the data so that it can be compiled and used with a neural network model. This includes encoding the dataset’s categorical variables using OneHotEncoder and then breaking up the dataset into seperate features (X) and target (y) datasets. Note, the column “IS_SUCCESSFUL” from the preprocessed DataFrame is chosen as the target variable.  
 
-Next, the best value for 'k' is determined using the elbow plot method. Using this 'k' value, the K-Means algorithm is run in order to cluster the cryptocurrencies according to the price changes of cryptocurrencies provided.
+Next, the features and target sets are split into training and testing datasets. The features are then scaled using scikit-learn’s StandardScaler().
 
-The process detailed in the paragraph directly above is then repeated but this time using PCA to find the optimal clusters.
+Using TensorFlow, a binary classification deep neural network model is defined. This model uses the dataset’s features as the inputs to predict whether an Alphabet Soup–funded startup will be successful. The number of inputs, layers, and nodes in each layer are established, as well as the number of outputs.  
 
-Finally, the two approaches are visually compared using overlay hvplots.
+The architecture of the model is next compiled using the binary_crossentropy loss function, the adam optimizer, and the accuracy evaluation metric. The training dataset is then fit to it with 50 epochs. 
 
-![ClusterApproachesCompared.](images/overlay.png)
+Working with this model as a baseline, modifications are then made to it in the interest of improving the model's accuracy. Two different alternate models are tested in comparison to the baseline model: (1) the number of epochs is changed from 50 to 100, and (2) an additonal layer is added. These models are finally compared to the baseline model.
 
 ---
 ## Contributors
